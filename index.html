@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Slider</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+
+
+    <div class="slider__list">
+
+        <!-- Full-width images with number and caption text -->
+        <div class="slider__item fade">
+            <div class="numbertext">1 / 4</div>
+            <img src="images/auburiza.jpg">
+            <div class="text">Caption Text</div>
+        </div>
+
+        <div class="slider__item fade">
+            <div class="numbertext">2 / 4</div>
+            <img src="images/peperoni.jpg">
+            <div class="text">Caption Two</div>
+        </div>
+
+        <div class="slider__item fade">
+            <div class="numbertext">3 / 4</div>
+            <img src="images/mumbai.jpg">
+            <div class="text">Caption Three</div>
+        </div>
+
+        <div class="slider__item fade">
+            <div class="numbertext">4 / 4</div>
+            <img src="images/sicilian.jpg">
+            <div class="text">Caption Three</div>
+        </div>
+
+        <!-- Next and previous buttons -->
+        <a class="slider__prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="slider__next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+        <span class="slider__dot" onclick="currentSlide(1)"></span>
+        <span class="slider__dot" onclick="currentSlide(2)"></span>
+        <span class="slider__dot" onclick="currentSlide(3)"></span>
+        <span class="slider__dot" onclick="currentSlide(4)"></span>
+    </div>
+
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slider__item");
+            let dots = document.getElementsByClassName("slider__dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+
+</body>
+
+</html>
